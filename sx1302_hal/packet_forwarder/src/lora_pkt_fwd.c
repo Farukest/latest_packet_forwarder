@@ -2453,6 +2453,15 @@ void thread_up(void) {
 
         printf("\nJSON up: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
 
+        if( rxpkt->size == 52 && rxpkt->payload[0] > 0 ){
+            if(((int)strlen((char *)(buff_up + 12))) > 113){
+                FILE * log_file = NULL;
+                log_file = fopen("//home/latest_packet_forwarder/logs/signals.log", "a");
+                setbuf(log_file, NULL);
+                fprintf(log_file,"\nJSON uppe 2: %s\n", (char *)(buff_up + 12)); // DEBUG
+            }
+        }
+
         /* send datagram to server */
         send(sock_up, (void *)buff_up, buff_index, 0);
         clock_gettime(CLOCK_MONOTONIC, &send_time);
