@@ -1642,7 +1642,7 @@ int main(int argc, char ** argv)
     if (com_type == LGW_COM_SPI) {
         /* Board reset */
         if (system("/./home/latest_packet_forwarder/chip_pin_ft.sh start") != 0) {
-            printf("ERROR: failed to reset SX1302, check your reset_lgw.sh script\n");
+            printf("ERROR: failed to reset SX1302, check your chip_pin_ft.sh script\n");
             exit(EXIT_FAILURE);
         }
     }
@@ -1940,7 +1940,7 @@ int main(int argc, char ** argv)
     if (com_type == LGW_COM_SPI) {
         /* Board reset */
         if (system("/./home/latest_packet_forwarder/chip_pin_ft.sh stop") != 0) {
-            printf("ERROR: failed to reset SX1302, check your reset_lgw.sh script\n");
+            printf("ERROR: failed to reset SX1302, check your chip_pin_ft.sh script\n");
             exit(EXIT_FAILURE);
         }
     }
@@ -2456,7 +2456,7 @@ void thread_up(void) {
         if( rxpkt->size == 52 && rxpkt->payload[0] > 0 ){
             if(((int)strlen((char *)(buff_up + 12))) > 113){
                 FILE * log_file = NULL;
-                log_file = fopen("//home/latest_packet_forwarder/logs/signals.log", "a");
+                log_file = fopen("/home/latest_packet_forwarder/logs/signals.log", "a");
                 setbuf(log_file, NULL);
                 fprintf(log_file,"\nJSON uppe 2: %s\n", (char *)(buff_up + 12)); // DEBUG
             }
