@@ -1,0 +1,1 @@
+truncate -s 0 /home/latest_packet_forwarder/logs/*.log
