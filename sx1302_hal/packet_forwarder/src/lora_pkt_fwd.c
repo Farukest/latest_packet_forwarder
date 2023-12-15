@@ -305,12 +305,12 @@ void thread_spectral_scan(void);
 
 static void usage( void )
 {
-    printf("~~~ Library version string~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf(" %s\n", lgw_version_info());
-    printf("~~~ Available options ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf(" -h  print this help\n");
-    printf(" -c <filename>  use config file other than 'global_conf.json'\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+//    printf("~~~ Library version string~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+//    printf(" %s\n", lgw_version_info());
+//    printf("~~~ Available options ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+//    printf(" -h  print this help\n");
+//    printf(" -c <filename>  use config file other than 'global_conf.json'\n");
+//    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 static void sig_handler(int sigio) {
@@ -2451,16 +2451,16 @@ void thread_up(void) {
         ++buff_index;
         buff_up[buff_index] = 0; /* add string terminator, for safety */
 
-        printf("\nJSON up: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
+//        printf("\nJSON up: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
 
-        if( rxpkt->size == 52 && rxpkt->payload[0] > 0 ){
-            if(((int)strlen((char *)(buff_up + 12))) > 113){
-                FILE * log_file = NULL;
-                log_file = fopen("/home/latest_packet_forwarder/logs/signals.log", "a");
-                setbuf(log_file, NULL);
-                fprintf(log_file,"\nJSON uppe 2: %s\n", (char *)(buff_up + 12)); // DEBUG
-            }
-        }
+//        if( rxpkt->size == 52 && rxpkt->payload[0] > 0 ){
+//            if(((int)strlen((char *)(buff_up + 12))) > 113){
+//                FILE * log_file = NULL;
+//                log_file = fopen("/home/latest_packet_forwarder/logs/signals.log", "a");
+//                setbuf(log_file, NULL);
+//                fprintf(log_file,"\nJSON uppe 2: %s\n", (char *)(buff_up + 12)); // DEBUG
+//            }
+//        }
 
         /* send datagram to server */
         send(sock_up, (void *)buff_up, buff_index, 0);
